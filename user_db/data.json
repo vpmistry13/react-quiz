@@ -1,0 +1,34 @@
+[
+    {
+        "id" : "1",
+        "username" : "test1",
+        "password" : "test1@123",
+        "firstName" : "test",
+        "lastName" : "dev",
+        "token" : "fake token"
+    },
+    {
+        "id" : "2",
+        "username" : "test2",
+        "password" : "test2@123",
+        "firstName" : "test 2",
+        "lastName" : "dev",
+        "token" : "fake token"
+    },
+    {
+        "id" : "3",
+        "username" : "test3",
+        "password" : "test3@123",
+        "firstName" : "test 3",
+        "lastName" : "dev",
+        "token" : "fake token"
+    },
+    {
+        "id" : "4",
+        "username" : "test4",
+        "password" : "test4@123",
+        "firstName" : "test 4",
+        "lastName" : "dev",
+        "token" : "fake token"
+    }
+]
