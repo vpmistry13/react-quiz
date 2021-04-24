@@ -1,0 +1,142 @@
+[
+  {
+     "Id":1,
+     "title":"JavaScript",
+     "questions":{
+        "1":"Inside which HTML element do we put the JavaScript?",
+        "2":"What is the correct JavaScript syntax to change the content of the HTML element below? <p id='demo'>This is a demonstration.</p>",
+        "3":"Where is the correct place to insert a JavaScript?",
+        "4":"What is the correct syntax for referring to an external script called 'xxx.js'?",
+        "5":"The external JavaScript file must contain the <script> tag."
+     },
+     "answers":{
+        "1":{
+           "1":"<script>",
+           "2":"<js>",
+           "3":"<javascript>",
+           "4":"<scripting>"
+        },
+        "2":{
+           "1":"document.getElementByName('p').innerHTML = 'Hello World!'';",
+           "2":"document.getElementById('demo').innerHTML = 'Hello World!';",
+           "3":"document.getElement('p').innerHTML = 'Hello World!';",
+           "4":"#demo.innerHTML = 'Hello World!';"
+        },
+        "3":{
+           "1":"The <body> Section",
+           "2":"The <head> section",
+           "3":"Both the <head> section and <body> section are correct!"
+        },
+        "4":{
+           "1":"<script href='xxx.js'>",
+           "2":"<script name='xxx.js'>",
+           "3":"<script src='xxx.js'>"
+        },
+        "5":{
+           "1":"TRUE",
+           "2":"FALSE"
+        }
+     },
+     "correctAnswers":{
+        "1":"1",
+        "2":"2",
+        "3":"3",
+        "4":"3",
+        "5":"1"
+     }
+  },
+  {
+    "Id":2,
+    "title":"HTML",
+    "questions":{
+       "1":"What does HTML stand for?",
+       "2":"Who is making the Web standards?",
+       "3":"Choose the correct HTML element for the largest heading:",
+       "4":"What is the correct HTML element for inserting a line break?",
+       "5":"What is the correct HTML for adding a background color?"
+    },
+    "answers":{
+       "1":{
+          "1":"Hyperlinks and Text Markup Language",
+          "2":"Hyper Text Markup Language",
+          "3":"Home Tool Markup Language"
+       },
+       "2":{
+          "1":"Microsoft",
+          "2":"Google",
+          "3":"Mozilla",
+          "4":"The World Wide Web Consortium"
+       },
+       "3":{
+          "1":"<h1>",
+          "2":"<h6>",
+          "3":"<heading>",
+          "4":"<head>"
+       },
+       "4":{
+          "1":"<lb>",
+          "2":"<br>",
+          "3":"<break/>"
+       },
+       "5":{
+          "1":"<background>yellow</background>",
+          "2":"<body bg='yellow'></body>",
+          "3":"<body style='background-color:yellow;'></body>"
+       }
+    },
+    "correctAnswers":{
+       "1":"2",
+       "2":"4",
+       "3":"1",
+       "4":"2",
+       "5":"3"
+    }
+ },
+ {
+  "Id":3,
+  "title":"CSS",
+  "questions":{
+     "1":"What does CSS stand for?",
+     "2":"What is the correct HTML for referring to an external style sheet?",
+     "3":"Where in an HTML document is the correct place to refer to an external style sheet?",
+     "4":"Which HTML tag is used to define an internal style sheet?",
+     "5":"Which HTML attribute is used to define inline styles?"
+  },
+  "answers":{
+     "1":{
+        "1":"Creative Style Sheets",
+        "2":"Cascading Style Sheets",
+        "3":"Colorful Style Sheets",
+        "4":"Computer Style Sheets"
+     },
+     "2":{
+        "1":"<style src='mystyle.css'>",
+        "2":"<link rel='stylesheet' type='text/css' href='mystyle.css'>",
+        "3":"<stylesheet>mystyle.css</stylesheet>"
+     },
+     "3":{
+        "1":"In the <head> section",
+        "2":"At the end of the document",
+        "3":"In the <body> section"
+     },
+     "4":{
+        "1":"<script>",
+        "2":"<css>",
+        "3":"<style>"
+     },
+     "5":{
+        "1":"class",
+        "2":"font",
+        "3":"styles",
+        "4":"style"
+     }
+  },
+  "correctAnswers":{
+     "1":"2",
+     "2":"2",
+     "3":"1",
+     "4":"3",
+     "5":"4"
+  }
+}
+]

@@ -5,7 +5,8 @@
         "password" : "test1@123",
         "firstName" : "test",
         "lastName" : "dev",
-        "token" : "fake token"
+        "token" : "fake token",
+        "quiz_result" : ""
     },
     {
         "id" : "2",
@@ -13,7 +14,8 @@
         "password" : "test2@123",
         "firstName" : "test 2",
         "lastName" : "dev",
-        "token" : "fake token"
+        "token" : "fake token",
+        "quiz_result" : ""
     },
     {
         "id" : "3",
@@ -21,7 +23,8 @@
         "password" : "test3@123",
         "firstName" : "test 3",
         "lastName" : "dev",
-        "token" : "fake token"
+        "token" : "fake token",
+        "quiz_result" : ""
     },
     {
         "id" : "4",
@@ -29,6 +32,7 @@
         "password" : "test4@123",
         "firstName" : "test 4",
         "lastName" : "dev",
-        "token" : "fake token"
+        "token" : "fake token",
+        "quiz_result" : ""
     }
 ]
