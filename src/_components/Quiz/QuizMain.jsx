@@ -32,6 +32,7 @@ export default class Quiz extends Component {
 
     componentDidMount(){
         const {quiz_option} = this.props;
+        //get all quiz records and setup for question for current selected theme
         fetch('quiz.json').then(this.handleResponse).then(res => {
             console.log(res)
             var get_quiz =  res.filter((res) => res.Id == quiz_option);
@@ -59,7 +60,7 @@ export default class Quiz extends Component {
         })
     }
 
-
+    //handle fetch method response
     handleResponse(response) {
         return response.text().then(text => {
             const data = text && JSON.parse(text);

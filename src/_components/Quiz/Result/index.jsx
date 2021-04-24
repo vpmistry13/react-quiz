@@ -22,6 +22,7 @@ class Result extends Component {
   
 
     render() {
+        ///getting this data from previous route state 
         const{ state } = this.props.location;
          if(state){
             const{ attempt_question,quiz_option } = state;

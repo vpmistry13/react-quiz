@@ -81,6 +81,7 @@ function _delete(id) {
     return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
 }
 
+//handle fetch api response
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);

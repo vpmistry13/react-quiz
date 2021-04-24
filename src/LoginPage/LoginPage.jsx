@@ -21,11 +21,13 @@ class LoginPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    //handler form data set
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
 
+    //login submit data 
     handleSubmit(e) {
         e.preventDefault();
 

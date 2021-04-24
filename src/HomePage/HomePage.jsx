@@ -17,18 +17,17 @@ class HomePage extends React.Component {
     componentDidMount() { 
         const{quiz_option} = this.props.location; 
         if(quiz_option){
+            //called this function when restart quiz button click
             this.handleOnChangeQuiz(quiz_option);
         }
     }
 
-    //loading handler
+    //loading handler enable/disabled
     handleLoading(v){
         this.setState({isLoading:v});
-    }
-    handleDeleteUser(id) {
-        return (e) => this.props.deleteUser(id);
-    }
+    } 
 
+    //handler for quiz options
     handleOnChangeQuiz(value){
         this.setState({quiz_option:value,isLoading:true})
     }
