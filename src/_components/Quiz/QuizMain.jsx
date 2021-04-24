@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Question from './question/Question';
 import Answer from './answer/Answer';
 import './QuizMain.css';
+import { Redirect } from "react-router-dom";
 
 export default class Quiz extends Component {
 
@@ -14,6 +15,7 @@ export default class Quiz extends Component {
                 questions: [],
                 answers: [],
                 correctAnswers: [],
+                attempt_question : [],
                 correctAnswer: 0,
                 clickedAnswer: 0,
                 step: 1,
@@ -37,10 +39,19 @@ export default class Quiz extends Component {
                 get_quiz = get_quiz[0];
                 if(get_quiz){
                     const {questions,answers,correctAnswers} = get_quiz;
+                    var attempt_question = [];
+                    if(questions && Object.keys(questions).length > 0){
+                        var i = 1;
+                        for (const [key, value] of Object.entries(questions)) {
+                            attempt_question.push({q_id:i,choose_option:''});
+                            i++;
+                        }
+                    } 
                     this.setState({
                         questions,
                         answers,
-                        correctAnswers
+                        correctAnswers,
+                        attempt_question
                     })
                     this.props.handleLoading(false);
                 }
@@ -68,36 +79,63 @@ export default class Quiz extends Component {
 
     // the method that checks the correct answer
     checkAnswer(answer){
-        const { correctAnswers, step, score } = this.state;
+        const { correctAnswers, step, score,attempt_question } = this.state;
+        var attempt_q = attempt_question;
+            attempt_question.map((d,i) => {
+                if(step == d.q_id){
+                    attempt_q[i].choose_option = answer;
+                    attempt_q[i].correct_option = correctAnswers[step];
+
+                }
+            })
         if(answer === correctAnswers[step]){
+            
+
             this.setState({
                 score: score + 1,
                 correctAnswer: correctAnswers[step],
-                clickedAnswer: answer
+                clickedAnswer: answer,
+                attempt_question : attempt_q
             });
         }else{
             this.setState({
                 correctAnswer: 0,
-                clickedAnswer: answer
+                clickedAnswer: answer,
+                attempt_question : attempt_q
             });
         }
     }
 
     // method to move to the next question
     nextStep(step) {
+        const{attempt_question} = this.state;
+        var choose_option = 0;
+        attempt_question.map((d,i) => {
+            if(d.q_id == (step + 1)){
+                choose_option = d.choose_option;
+            }
+        })
         this.setState({
             step: step + 1,
             correctAnswer: 0,
-            clickedAnswer: 0
+            clickedAnswer: choose_option
         });
+         
     }
 
     // method to move to the previous question
     previousStep(step) {
+        const {attempt_question} = this.state;
+        var choose_option = 0;
+        attempt_question.map((d,i) => {
+            if(d.q_id == (step - 1)){
+                choose_option = d.choose_option;
+            }
+        })
         this.setState({
             step: step - 1,
             correctAnswer: 0,
-            clickedAnswer: 0
+            clickedAnswer: choose_option
         });
     }
 
@@ -107,7 +145,7 @@ export default class Quiz extends Component {
     }
 
     render(){
-        let { questions, answers, correctAnswer, clickedAnswer, step, score } = this.state;
+        let { questions, answers, correctAnswer, clickedAnswer, step, score, attempt_question } = this.state;
         const {isLoading} = this.props;
         if(isLoading){
             return "Loading Quiz...";
@@ -139,8 +177,8 @@ export default class Quiz extends Component {
                         <button
                         className="btn btn-primary"
                         disabled={
-                            clickedAnswer && Object.keys(questions).length >= step
-                            ? false : true
+                            clickedAnswer == 0
+                            ? true : false
                         }
                         onClick={() => this.nextStep(step)}>
 
@@ -158,11 +196,12 @@ export default class Quiz extends Component {
 
                         </div>
                     </>) : (
-                        <div className="finalPage">
-                            <h1>You have completed the quiz!</h1>
-                            <p>Your score is: {score} of {Object.keys(questions).length}</p>
-                            <p>Thank you!</p>
-                        </div>
+                        <Redirect
+                            to={{
+                            pathname: "/result",
+                            state: { attempt_question: attempt_question }
+                        }}
+                        />
                     )
                 }
             </div>
