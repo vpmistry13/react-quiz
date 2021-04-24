@@ -14,8 +14,11 @@ class HomePage extends React.Component {
         this.handleLoading = this.handleLoading.bind(this);
       }
 
-    componentDidMount() {
-        this.props.getUsers();
+    componentDidMount() { 
+        const{quiz_option} = this.props.location; 
+        if(quiz_option){
+            this.handleOnChangeQuiz(quiz_option);
+        }
     }
 
     //loading handler

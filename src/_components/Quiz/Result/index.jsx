@@ -1,4 +1,5 @@
 import React, {Component} from 'react'; 
+import { Link, Redirect } from "react-router-dom";
 
 class Result extends Component {
 
@@ -7,26 +8,35 @@ class Result extends Component {
       }
 
     componentDidMount() {
-        
+        //store result in localStorage
+        const{ state } = this.props.location;
+         if(state){
+            const{ attempt_question,quiz_option } = state;
+            //store attempt question
+            localStorage.setItem('attempt_question',JSON.stringify(attempt_question));
+            //store last quiz option
+            localStorage.setItem('quiz_option',quiz_option);
+         }
     }
  
   
 
     render() {
         const{ state } = this.props.location;
-        const{ attempt_question } = state;
-        var total_score = 0;
-        attempt_question.map((d) => {
-            if(d.correct_option == d.choose_option){
-                total_score++;
-            }
-        })
+         if(state){
+            const{ attempt_question,quiz_option } = state;
+        var total_score = 0; 
         if(attempt_question && attempt_question.length > 0){
+            attempt_question.map((d) => {
+                if(d.correct_option == d.choose_option){
+                    total_score++;
+                }
+            })
             return (
                 <section className="container">
                     <div className="col-sm-8 col-sm-offset-2">
                     <div id="result-of-question" className="pulse animated" >
-                            <span id="totalCorrect" className="pull-right">Total correct: <strong>{total_score}</strong></span>
+                            <h2 className="pull-right">Total correct: <strong>{total_score}</strong></h2>
                             <table className="table table-hover table-responsive">
                                 <thead>
                                     <tr>
@@ -44,7 +54,10 @@ class Result extends Component {
                                             <td>{q_id}</td>
                                             <td>{correct_option}</td>
                                             <td>{choose_option}</td>
-                                            <td>{correct_option == choose_option ? 'Correct':'Incorrect'}</td>
+                                            <td>{correct_option == choose_option ? 'Correct':
+                                            choose_option == '' ?
+                                            'Not attempt':'Incorrect'
+                                            }</td>
                                         </tr>)
                                     })
                                 }
@@ -52,11 +65,13 @@ class Result extends Component {
                             </table>
                         </div>
                         <div  className="row">
-                            <div className="col-md-3">
-                                <button type="button" className="btn btn-danger">Restart Quiz</button>
+                            <div className="col-md-3"> 
+                                <Link className="btn btn-danger" to={ { pathname: '/',quiz_option }}
+                                    > Restart Quiz</Link>
                             </div>
                             <div className="col-md-3">
-                                <button type="button" className="btn btn-primary">Start New Quiz</button>
+                                <Link className="btn btn-primary" to={ { pathname: '/' }}
+                                    > Start New Quiz</Link>
                             </div>
                         </div>
                     </div>
@@ -71,6 +86,14 @@ class Result extends Component {
                 </section>
             )
         }
+         }else return(
+            <section className="container">
+            <div className="col-sm-8 col-sm-offset-2">
+                <h1>NO Result Found</h1>
+            </div>
+            </section>
+        )
+        
         
     }
 }

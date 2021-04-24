@@ -146,7 +146,7 @@ export default class Quiz extends Component {
 
     render(){
         let { questions, answers, correctAnswer, clickedAnswer, step, score, attempt_question } = this.state;
-        const {isLoading} = this.props;
+        const {isLoading, quiz_option} = this.props; 
         if(isLoading){
             return "Loading Quiz...";
         }
@@ -199,7 +199,7 @@ export default class Quiz extends Component {
                         <Redirect
                             to={{
                             pathname: "/result",
-                            state: { attempt_question: attempt_question }
+                            state: { attempt_question: attempt_question,quiz_option }
                         }}
                         />
                     )
